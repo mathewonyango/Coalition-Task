@@ -10,7 +10,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        return view('products.index');
+        return view('Products.index');
     }
 
     public function store(Request $request)
@@ -22,11 +22,13 @@ class ProductController extends Controller
     public function fetch()
     {
         $products = Product::orderBy('created_at', 'desc')->get();
+        // dd($products);
         return response()->json($products);
     }
 
     public function update(Request $request, $id)
     {
+        // dd($request);
         $product = Product::find($id);
         $product->update($request->all());
         return response()->json($product);
